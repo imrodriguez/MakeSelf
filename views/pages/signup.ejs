@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <% include ../partials/head %>
+</head>
+<body>
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main class="container-fluid">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-4 text-center">
+          <form action="/newuser" method="post">
+            <div class="form-group">
+              <label for="user">Username:</label>
+              <input type="text" name="user" id="user" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" name="password" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <input type="submit" name="Sign up" value="Sign up" class="btn btn-primary">
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+</body>
+</html>

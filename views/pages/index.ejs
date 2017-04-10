@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <% include ../partials/head %>
+</head>
+<body>
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+
+      <div class="jumbotron jumbotron-fluid text-center">
+        <h1 class="display-3">MakeSelf!</h1>
+        <p class="lead">Application to manage campaigns</p>
+        <p class="lead">
+          <%if (sesion == "yes") { %>
+            <p>Welcome <%= username %></p>
+            <a class="btn btn-primary btn-lg" href="/dashboard" role="button">Go to dashboard</a>
+          <% } %>
+          <% if (sesion == "no") { %>
+            <a class="btn btn-primary btn-lg" href="/signup" role="button">Sign up</a>
+            <span>or</span>
+            <a class="btn btn-primary btn-lg" href="/login" role="button">Sign in</a
+          <% } %>
+        </p>
+      </div>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+</body>
+</html>

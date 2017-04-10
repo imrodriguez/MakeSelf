@@ -1,0 +1,23 @@
+b {
+    color: #673AB7;
+}
+
+a {
+  color: #2c3e50;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #34495e;
+}
+
+button, .btn-primary {
+  background-color: #673AB7;
+  border-color: #673AB7;
+  border-radius: 0px;
+}
+
+button:hover, .btn-primary:hover {
+  background-color: #7E57C2;
+  border-color: #7E57C2;
+}

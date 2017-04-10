@@ -1,0 +1,48 @@
+/* OPTIONS MENU */
+
+#optionsmenu {
+  background-color: #EEEEEE;
+  height: 45px;
+}
+
+#optionsmenu .col, #optionsmenu .col .row {
+  height: 100%;
+}
+
+#optionsmenu input {
+  border-radius: 0;
+}
+
+/* MENU */
+
+#menu {
+  padding: 0;
+  position: fixed;
+  height: 100%;
+}
+
+#menu ul {
+  height: 100%;
+  padding: 0;
+  background-color: #673AB7;
+}
+
+#menu ul li {
+  list-style: none;
+  padding: 5px;
+}
+
+#menu ul li i {
+  color: white;
+}
+
+#menu ul li.active {
+  background-color: #311B92;
+}
+
+/* CANVAS */
+
+#canvas {
+  margin-left: 8%;
+  padding: 0;
+}

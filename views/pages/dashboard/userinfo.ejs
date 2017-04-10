@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <% include ../../partials/head %>
+    <link rel="stylesheet" href="/css/dashboard/dashboard.css">
+</head>
+<body>
+
+    <header>
+        <% include ../../partials/header %>
+    </header>
+
+    <main class="container-fluid">
+        <div class="row">
+          <% include ../../partials/dashboard/sidebar %>
+          <div class="col-9" id="content">
+            <h2><%= title %></h2>
+            <ul>
+              <li><%= username %></li>
+            </ul>
+          </div>
+        </div>
+    </main>
+
+    <footer>
+        <% include ../../partials/footer %>
+    </footer>
+
+</body>
+</html>

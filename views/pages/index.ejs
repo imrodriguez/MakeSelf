@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <% include ../partials/head %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 </head>
 <body>
 
@@ -10,9 +11,9 @@
     </header>
 
     <main>
-
-      <div class="jumbotron jumbotron-fluid text-center">
-        <h1 class="display-3">MakeSelf!</h1>
+      <div class="bg"></div>
+      <div class="jumbotron jumbotron-fluid text-center animated bounceInRight">
+        <h1 class="display-3"><b>Shout</b>It!</h1>
         <p class="lead">Application to manage campaigns</p>
         <p class="lead">
           <%if (sesion == "yes") { %>
@@ -20,14 +21,24 @@
             <a class="btn btn-primary btn-lg" href="/dashboard" role="button">Go to dashboard</a>
           <% } %>
           <% if (sesion == "no") { %>
-            <a class="btn btn-primary btn-lg" href="/signup" role="button">Sign up</a>
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#register">
+              Sign up
+            </button>
+            <!--<a class="btn btn-primary btn-lg" href="/signup" role="button">Sign up</a>-->
             <span>or</span>
-            <a class="btn btn-primary btn-lg" href="/login" role="button">Sign in</a
+            <!--<a class="btn btn-primary btn-lg" href="/login" role="button" data-toggle="modal" data-target="#login">Sign in</a>-->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login">
+              Sign in
+            </button>
           <% } %>
         </p>
-      </div>
-    </main>
 
+      </div>
+      </div>
+
+    </main>
+    <% include ../partials/login %>
+    <% include ../partials/register %>
     <footer>
         <% include ../partials/footer %>
     </footer>

@@ -3,14 +3,37 @@
 #optionsmenu {
   background-color: #EEEEEE;
   height: 45px;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
+
+#optionsmenu .row {
+  height: 100%;
 }
 
 #optionsmenu .col, #optionsmenu .col .row {
   height: 100%;
 }
 
-#optionsmenu input {
-  border-radius: 0;
+#optionsmenu .input-group {
+  width: 100px;
+  height: 23px;
+}
+
+#optionsmenu .input-group input {
+  padding: 0;
+}
+
+#optionsmenu select {
+  padding: 0px 20px 0px 5px;
+  height: 24px;
+}
+
+#optionsmenu input[type=color] {
+  padding: 0;
+  width: 30px;
+  border: none;
 }
 
 /* MENU */
@@ -19,6 +42,7 @@
   padding: 0;
   position: fixed;
   height: 100%;
+  z-index: 2;
 }
 
 #menu ul {
@@ -41,8 +65,20 @@
 }
 
 /* CANVAS */
+#main {
+  margin-top: 45px;
+}
+.main {
+  z-index: 1;
+  background-color: #EEE;
+}
 
-#canvas {
-  margin-left: 8%;
+#svg {
+  margin-left: 120px;
+  width: 400px;
+  height: 600px;
   padding: 0;
+  background-color: white;
+  display: block;
+  margin: 0 auto;
 }

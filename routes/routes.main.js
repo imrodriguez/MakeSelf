@@ -25,7 +25,7 @@ router.get("/signup", (req,res)=>{
 });
 
 router.post("/newuser", (req,res)=>{
-  var user = new User({user: req.body.user, password: req.body.password});
+  var user = new User({name: req.body.name, user: req.body.user, password: req.body.password, email: req.body.mail});
 
   user.save().then((us)=>{
     res.send("Datos guardados");
@@ -38,7 +38,10 @@ router.post("/newuser", (req,res)=>{
 });
 
 router.post("/signin", (req,res)=>{
-  User.findOne({name: req.body.email,password: req.body.password},(err,user)=>{
+    // User.find({name: req.body.user,password: req.body.password},(err,user)=>{
+    //   console.log(user);
+    // });
+  User.findOne({user: req.body.user,password: req.body.password},(err,user)=>{
     req.session.user_id = user._id;
     res.redirect("/dashboard");
   });

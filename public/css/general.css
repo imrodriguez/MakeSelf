@@ -9,7 +9,7 @@ a {
 a:hover {
   text-decoration: none;
   color: #34495e;
-}
+} 
 
 button, .btn-primary {
   background-color: #673AB7;
@@ -20,4 +20,35 @@ button, .btn-primary {
 button:hover, .btn-primary:hover {
   background-color: #7E57C2;
   border-color: #7E57C2;
+}
+/* INDEX */
+.jumbotron {
+  background-color: transparent;
+}
+
+.bg {
+  background-image: url("/img/portadalg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+
+/* LOGIN */
+
+.form-group input {
+  border-radius: 0px;
 }

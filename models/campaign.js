@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-mongoose.connect('mongodb://localhost/users-mk');
+mongoose.connect('mongodb://localhost/campaigns');
 
 var campaign_schema = new Schema({
   name : String,

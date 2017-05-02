@@ -46,3 +46,28 @@
 #content {
   padding: 10px 30px;
 }
+
+@media (max-width: 850px) {
+  #sidebar {
+    width: 60px;
+  }
+
+  #sidebar hr {
+    margin: 0;
+    border: none;
+  }
+
+  #sidebar .user-info {
+    display: none;
+  }
+
+  #sidebar ul a span {
+    display: none;
+  }
+}
+
+@media (max-width: 450px) {
+  #sidebar {
+    width: 80px;
+  }
+}

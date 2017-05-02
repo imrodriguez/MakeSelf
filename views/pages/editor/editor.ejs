@@ -8,16 +8,19 @@
 
 <body>
   <% include ../../partials/header %>
-
-	<div class="container-fluid">
-    <div class="row">
-			<div class="col-12" id="optionsmenu">
+	<div class="container-fluid" id="optionsmenu">
+		<div class="row align-items-center">
+			<div class="col-12">
 				<div class="col">
-					<div class="row align-items-center"></div>
+					<div class="row align-items-center">
+					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
+
+	<div class="container-fluid" id="main">
 		<div class="row">
 			<div class="col-1" id="menu">
 				<ul class="text-center">
@@ -27,24 +30,26 @@
 					<li id="setText"><i class="fa fa-pencil" aria-hidden="true"></i></li>
 				</ul>
 			</div>
+			<div class="col-12 main">
+				<svg id="svg">
 
-			<div class="col-11 text-center" id="canvas"></div>
+				</svg>
+			</div>
 		</div>
 	</div>
-
-  <footer>
+	<footer>
     <script>
-      var docsize = " <%= tamaño %>" ;
-      var docsplit = docsize.split("x");
-      var docw = docsplit[0];
-      var doch = docsplit[1];
+      var docw = <%= w %>;
+      var doch = <%= h %>;
     </script>
       <% include ../../partials/footer %>
-      <script src="/js/editor/libs/p5.min.js" charset="utf-8"></script>
-      <script src="/js/editor/class/circle.js" charset="utf-8"></script>
-      <script src="/js/editor/class/square.js" charset="utf-8"></script>
-      <script src="/js/editor/class/text.js" charset="utf-8"></script>
-      <script src="/js/editor/editor.js" charset="utf-8"></script>
+  		<script src="/js/editor/libs/snap.svg-min.js" charset="utf-8"></script>
+			<script src="/js/editor/class/square.js" charset="utf-8"></script>
+			<script src="/js/editor/class/circle.js" charset="utf-8"></script>
+			<script src="/js/editor/class/text.js" charset="utf-8"></script>
+			<script src="/js/editor/view/options.js" charset="utf-8"></script>
+			<script src="/js/editor/loadtemplates.js" charset="utf-8"></script>
+			<script src="/js/editor/editor.js" charset="utf-8"></script>
   </footer>
 </body>
 </html>

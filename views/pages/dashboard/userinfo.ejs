@@ -11,15 +11,30 @@
     </header>
 
     <main class="container-fluid">
+      <div class="row">
+        <div class="col-12 title">
+          <h2><%= title %></h2>
+        </div>
+      </div>
         <div class="row">
           <% include ../../partials/dashboard/sidebar %>
-          <div class="col-9" id="content">
-            <h2><%= title %></h2>
-            <ul>
-              <li><%= username %></li>
-              <li><%= name %></li>
-              <li><%= email %></li>
-            </ul>
+          <div class="col-10" id="content">
+            <h2>Username: <%= username %></h2>
+            <form class="" action="index.html" method="post">
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" value="<%= name %>" id="name" name="name">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" class="form-control" value="<%= email %>" id="email" name="email">
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+              </div>
+            </form>
           </div>
         </div>
     </main>

@@ -40,11 +40,23 @@
 }
 
 #content {
-  margin-left: 17%;
+  margin-left: 16.6%;
+}
+
+.title {
+  padding: 0;
+}
+
+.title h2 {
+  background-color: #673AB7;
+  color: #FFF;
+  padding: 10px;
+  font-size: 16px;
+  margin: 0;
 }
 
 #content {
-  padding: 10px 30px;
+  padding: 15px;
 }
 
 @media (max-width: 850px) {
@@ -70,4 +82,25 @@
   #sidebar {
     width: 80px;
   }
+}
+
+/* CAMPAIGNS */
+
+.cmp {
+  margin-top: 25px;
+  border: 1px solid #EEE;
+}
+
+.cmp-title {
+  background-color: #EEE;
+}
+
+.cmp-description {
+
+}
+
+.cmp-footer a {
+  background-color: #673AB7;
+  color: #FFF;
+  width: 100%;
 }

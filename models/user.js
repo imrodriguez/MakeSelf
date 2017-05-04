@@ -12,4 +12,15 @@ var user_schema = new Schema({
 
 var User = mongoose.model("User",user_schema);
 
+var campaign_schema = new Schema({
+  name : String,
+  user: String,
+  description: String,
+  designs: Object
+});
+
+var Campaign = mongoose.model("Campaign",campaign_schema);
+
+module.exports.Campaign = Campaign;
+
 module.exports.User = User;

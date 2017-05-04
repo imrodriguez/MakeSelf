@@ -28,7 +28,7 @@ router.post("/newuser", (req,res)=>{
   var user = new User({name: req.body.name, user: req.body.user, password: req.body.password, email: req.body.mail});
 
   user.save().then((us)=>{
-    res.send("Datos guardados");
+    res.redirect("/");
   },(err)=>{
     if (err) {
       console.log(String(err));
@@ -38,9 +38,6 @@ router.post("/newuser", (req,res)=>{
 });
 
 router.post("/signin", (req,res)=>{
-    // User.find({name: req.body.user,password: req.body.password},(err,user)=>{
-    //   console.log(user);
-    // });
   User.findOne({user: req.body.user,password: req.body.password},(err,user)=>{
     req.session.user_id = user._id;
     res.redirect("/dashboard");

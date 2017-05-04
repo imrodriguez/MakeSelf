@@ -1,7 +1,8 @@
 var express = require('express');
 var User = require('../models/user').User;
-//var Campaign = require('../models/campaign').Campaign;
-
+var Campaigns = require('../models/user').Campaign;
+var path = require('path');
+const uploadDir = path.join(__dirname.replace("/routes/g",""), '../public/uploads');
 var router = express.Router();
 
 router.get("/",(req,res)=>{
@@ -17,31 +18,26 @@ router.get("/home",(req,res)=>{
 });
 
 router.get("/campaigns",(req,res)=>{
-  var campaigns = [{name: "Campaña1",description: "gasd"},{name: "Campaña2",description: "dafsdf"}]
-  res.render("pages/dashboard/campaigns",{
-    title: "Campaigns",
-    content: campaigns,
-    username: req.session.user
+  Campaigns.find({user: req.session.user_id},(err,campaigns)=>{
+    res.render("pages/dashboard/campaigns",{
+      title: "Campaigns",
+      content: campaigns,
+      username: req.session.user
+    });
   });
 });
 
 router.post("/newcampaign",(req,res)=>{
-  var campaign = new Campaign({name: req.body.name});
+  var campaign = new Campaigns({name: req.body.name,user: req.session.user_id,description: req.body.description});
 
   campaign.save().then((us)=>{
-    console.log("se ha guardado");
-    res.redirect("dashboard/campaigns");
+    res.redirect("/dashboard/campaigns");
   },(err)=>{
     if (err) {
       console.log(String(err));
       res.send("No se pudo guardar la información");
     }
   });
-});
-
-router.post("/newcampaign",(req,res)=>{
-  var campaigns = [{name: "Campaña1",description: "gasd"},{name: "Campaña2",description: "dafsdf"}]
-
 });
 
 router.get("/user",(req,res)=>{
@@ -74,6 +70,24 @@ router.get("/editor/:size",(req,res)=>{
     w: docw,
     h: doch
   });
+});
+
+router.get("/upload",(req,res)=>{
+  res.render("pages/dashboard/upload");
+});
+
+router.post("/uploadfile",(req,res)=>{
+  var sampleFile = req.files.sampleFile;
+
+  sampleFile.mv(uploadDir + req.files.sampleFile.name, function(err) {
+  //   if(err){
+  //     return res.status(500).send(err);
+  //   }
+  //   res.send('File uploaded!');
+  });
+
+  console.log(req.files.sampleFile.name);
+  res.redirect("/dashboard/upload");
 });
 
 module.exports = router;

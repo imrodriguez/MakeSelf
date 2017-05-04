@@ -8,7 +8,7 @@ module.exports = (req,res,next)=>{
     User.findById(req.session.user_id,(err,user)=>{
       if (err) {
         console.log(err);
-        res.redirect("/login");
+        res.redirect("/");
       } else {
         req.session.user = user.user;
         next();

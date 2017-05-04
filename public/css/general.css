@@ -9,7 +9,7 @@ a {
 a:hover {
   text-decoration: none;
   color: #34495e;
-} 
+}
 
 button, .btn-primary {
   background-color: #673AB7;
@@ -21,6 +21,26 @@ button:hover, .btn-primary:hover {
   background-color: #7E57C2;
   border-color: #7E57C2;
 }
+
+button.close:hover {
+  background-color: #673AB7;
+  color: #FFF;
+}
+
+.modal-content {
+  border-radius: 0px;
+}
+
+.modal-header {
+  padding: 4px 15px;
+  background-color: #673AB7;
+  color: #FFF;
+}
+
+.modal-header button {
+  color: #FFF;
+}
+
 /* INDEX */
 .jumbotron {
   background-color: transparent;

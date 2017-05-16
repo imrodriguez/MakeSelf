@@ -1,5 +1,5 @@
 var express = require('express');
-var User = require('../models/user').User;
+var User = require('../models/schemas').User;
 
 var router = express.Router();
 
@@ -32,7 +32,7 @@ router.post("/newuser", (req,res)=>{
   },(err)=>{
     if (err) {
       console.log(String(err));
-      res.send("No se pudo guardar la información");
+      res.send("No se pudo crear el usuario");
     }
   });
 });

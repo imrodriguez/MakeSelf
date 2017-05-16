@@ -5,15 +5,16 @@ class text {
     this.y = y;
     this.text = text;
     this.size = "";
+    this.object;
   }
 
   show() {
-    var tx = doc.text(this.x,this.y,this.text);
-    tx.attr({
+    this.object = doc.text(this.x,this.y,this.text);
+    this.object.attr({
       id: this.id
     });
-    tx.drag(this.move, this.start, this.stop );
-    tx.click(function() {
+    this.object.drag(this.move, this.start, this.stop );
+    this.object.click(function() {
       text.load(parseInt(this.attr("text-size")),this.attr('fill'),this.attr('id'));
     });
   }

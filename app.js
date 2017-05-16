@@ -4,7 +4,7 @@ var session = require("express-session");
 var router_main = require('./routes/routes.main');
 var router_dash = require('./routes/routes.dash');
 var session_middleware = require('./middlewares/session');
-const fileUpload = require('express-fileupload');
+var fileUpload = require('express-fileupload');
 
 var app = express();
 

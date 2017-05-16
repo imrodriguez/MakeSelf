@@ -1,4 +1,4 @@
-var User = require('../models/user').User;
+var User = require('../models/schemas').User;
 var session = require("express-session");
 
 module.exports = (req,res,next)=>{

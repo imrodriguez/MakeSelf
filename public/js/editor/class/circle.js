@@ -1,13 +1,14 @@
 class circle {
-  constructor(x,y,r) {
+  constructor(x,y,r,id) {
+    this.id = id;
     this.x = x;
     this.y = y;
     this.radius = r;
-    this.object = doc.circle(this.x, this.y, this.radius);
-    this.object.drag(this.move, this.start, this.stop )
   }
 
   show() {
+    var cr = doc.circle(this.x, this.y, this.radius);
+    cr.drag(this.move, this.start, this.stop );
   }
 
   move(dx,dy) {

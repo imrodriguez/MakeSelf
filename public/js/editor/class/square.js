@@ -5,20 +5,20 @@ class square {
     this.w = w;
     this.h = h;
     this.id = id;
+    this.object = doc.rect(this.x,this.y,this.w,this.h);
   }
 
   show() {
-    var sq = doc.rect(this.x,this.y,this.w,this.h);
-    sq.attr({
+    this.object.attr({
       id: this.id
     });
-    sq.click(function() {
+    this.object.click(function() {
       square.load(parseInt(this.attr("x"))+parseInt(this.attr('transform').totalMatrix.e),parseInt(this.attr("y"))+ parseInt(this.attr('transform').totalMatrix.f),this.attr("width"),this.attr("height"),this.attr('fill'),this.attr('id'));
     });
-    sq.drag(this.move, this.start, this.stop );
+    this.object.drag(this.move, this.start, this.stop );
   }
 
-  move(dx,dy) {
+  move(dx,dy,x,y,evt) {
     this.attr({
       transform: this.data('origTransform') + (this.data('origTransform') ? "T" : "t") + [dx, dy]
     });
@@ -32,7 +32,10 @@ class square {
 
   }
 
-  static load(x,y,w,h,c,id) {;
+  static load(x,y,w,h,c,id) {
+    // $('#'+id).attr('stroke','red');
+    // $('#'+id).attr('stroke-width','3');
+    // $('#'+id).attr('stroke-linecap','square');
     function rgb2hex(rgb){
      rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
      return (rgb && rgb.length === 4) ? "#" +

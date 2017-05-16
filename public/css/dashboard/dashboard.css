@@ -95,6 +95,14 @@
   background-color: #EEE;
 }
 
+.card p {
+  text-align: center;
+  width: 95%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .cmp-description {
 
 }

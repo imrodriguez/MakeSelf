@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <% include ../../partials/head %>
+    <link rel="stylesheet" href="/css/dashboard/dashboard.css">
+</head>
+<body>
+
+    <header>
+        <% include ../../partials/header %>
+    </header>
+
+    <main class="container-fluid">
+        <div class="row">
+          <div class="col-12 title">
+            <h2>Campaign</h2>
+          </div>
+        </div>
+        <div class="row">
+          <% include ../../partials/dashboard/sidebar %>
+          <div class="col-10" id="content">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <h2><%= campaign.name %></h2>
+                  <p><%= campaign.description %></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <h3 class="text-center">Designs</h3>
+                  <a href="#" class="btn btn-primary">New Design</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </main>
+
+    <footer>
+        <% include ../../partials/footer %>
+    </footer>
+
+</body>
+</html>

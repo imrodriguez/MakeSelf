@@ -30,14 +30,17 @@
 
               <div class="row text-center">
                 <% content.forEach(function(campaign) { %>
-                  <div class="col-sm-6">
+                  <div class="col-sm-3">
+                    <a href="/dashboard/campaign/<%= campaign._id %>">
                     <div class="card">
                       <div class="card-block">
                         <h3 class="card-title"><%= campaign.name %></h3>
                         <p class="card-text"><%= campaign.description %></p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="/dashboard/campaign/<%= campaign._id %>" class="btn btn-primary">Go</a>
+                        <a href="/dashboard/deletecampaign/<%= campaign._id %>" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                       </div>
                     </div>
+                    </a>
                   </div>
                 <% }); %>
 

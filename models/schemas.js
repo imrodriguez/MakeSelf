@@ -1,0 +1,26 @@
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+mongoose.connect('mongodb://localhost/users-mk');
+
+var user_schema = new Schema({
+  name: String,
+  user: {type: String,required: "El nombre es obligatorio",maxlength:[20,"Username no puede ser mayor de 20"],minlength:[5,"El user es demasiado corto"]},
+  password: {type: String, required: "La contraseña es obligatoria", minlength:[5, "El password es muy corto"]},
+  email: String
+});
+
+var User = mongoose.model("User",user_schema);
+
+var campaign_schema = new Schema({
+  name : String,
+  user: String,
+  description: String,
+  designs: Object
+});
+
+var Campaign = mongoose.model("Campaign",campaign_schema);
+
+module.exports.Campaign = Campaign;
+
+module.exports.User = User;

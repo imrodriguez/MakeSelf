@@ -11,10 +11,13 @@ a:hover {
   color: #34495e;
 }
 
+.btn {
+  border-radius: 0px;
+}
+
 button, .btn-primary {
   background-color: #673AB7;
   border-color: #673AB7;
-  border-radius: 0px;
 }
 
 button:hover, .btn-primary:hover {
@@ -44,21 +47,12 @@ button.close:hover {
 /* INDEX */
 .jumbotron {
   background-color: transparent;
-}
-
-.bg {
   background-image: url("/img/portadalg.png");
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 100%;
-  min-width: 1024px;
-  width: 100%;
-  height: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  height: 500px;
 }
+
 
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
   img.bg {

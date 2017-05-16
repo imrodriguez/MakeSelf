@@ -1,12 +1,12 @@
 var express = require('express');
-var User = require('../models/user').User;
-var Campaigns = require('../models/user').Campaign;
+var User = require('../models/schemas').User;
+var Campaigns = require('../models/schemas').Campaign;
 var path = require('path');
-const uploadDir = path.join(__dirname.replace("/routes/g",""), '../public/uploads');
+const uploadDir = path.join(__dirname + '/../public/uploads/');
 var router = express.Router();
 
 router.get("/",(req,res)=>{
-    res.redirect("dashboard/home");
+    res.redirect("/dashboard/home");
 });
 
 router.get("/home",(req,res)=>{
@@ -27,6 +27,15 @@ router.get("/campaigns",(req,res)=>{
   });
 });
 
+router.get("/campaign/:id",(req,res)=>{
+  Campaigns.findOne({_id: req.params.id},(err,camp)=>{
+    res.render("pages/campaigns/campaign",{
+      campaign: camp,
+      username: req.session.user
+    });
+  })
+});
+
 router.post("/newcampaign",(req,res)=>{
   var campaign = new Campaigns({name: req.body.name,user: req.session.user_id,description: req.body.description});
 
@@ -38,6 +47,13 @@ router.post("/newcampaign",(req,res)=>{
       res.send("No se pudo guardar la información");
     }
   });
+});
+
+router.get("/deletecampaign/:id",(req,res)=>{
+  Campaigns.deleteOne({ _id: req.params.id }, (err)=> {
+
+  });
+  res.redirect("/dashboard/campaigns");
 });
 
 router.get("/user",(req,res)=>{
@@ -64,8 +80,8 @@ router.get("/editor",(req,res)=>{
 
 router.get("/editor/:size",(req,res)=>{
   var docsplit = req.params.size.split("x");
-  var docw = docsplit[0];
-  var doch = docsplit[1];
+  var docw = parseInt(docsplit[0], 10);
+  var doch = parseInt(docsplit[1], 10);;
   res.render("pages/editor/editor.ejs",{
     w: docw,
     h: doch
@@ -74,6 +90,7 @@ router.get("/editor/:size",(req,res)=>{
 
 router.get("/upload",(req,res)=>{
   res.render("pages/dashboard/upload");
+  console.log(uploadDir);
 });
 
 router.post("/uploadfile",(req,res)=>{

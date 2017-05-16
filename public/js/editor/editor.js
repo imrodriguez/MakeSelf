@@ -1,35 +1,59 @@
 var doc = Snap("#svg");
+doc.attr({
+  height: doch/2,
+  width: docw/2
+});
 var objects = [];
 var optionShape = "" ;
 
-var tmpsq = new square(100,150,200,50,84);
+var tmpsq = new square(0,50,800,75,84);
+var tmptx = new text(125,95,"Facebook Post",95);
+
 var template = [{
-  id : 84,
+  id : tmpsq.id,
   type: "square",
   object: tmpsq
+},{
+  id: tmptx.id,
+  type: "text",
+  object: tmptx
 }];
 
 loadtemplate(template);
+template[1].object.object.attr({
+  fill: "#FFF",
+  'font-size': "24"
+});
 
 doc.click(function(evt){
   if (optionShape == "square") {
-    var sq = new square(100,50,80,50,objects.length);
+    let sq = new square(evt.offsetX,evt.offsetY,80,50,objects.length);
     sq.show();
-    var object = {
+    let object = {
       id : objects.length,
       type: "square",
       object: sq
     };
     objects.push(object);
-    optionShape = "";
   }
   if (optionShape == "circle") {
-    var cr = new circle(100,50,50);
-    optionShape = "";
+    let cr = new circle(evt.offsetX,evt.offsetY,50);
+    cr.show();
+    let object = {
+      id: objects.length,
+      type: "circle",
+      object: cr
+    };
+    objects.push(object);
   }
   if (optionShape == "text") {
-    var tx = new text(100,50,prompt("Texto: "),objects.length);
+    let tx = new text(evt.offsetX,evt.offsetY,prompt("Texto: "),objects.length);
     tx.show();
-    optionShape = "";
+    let object = {
+      id: objects.length,
+      type: "text",
+      object: tx
+    };
+    objects.push(object);
   }
 });

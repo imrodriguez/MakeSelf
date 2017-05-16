@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <% include ../../partials/head %>
+    <link rel="stylesheet" href="/css/dashboard/dashboard.css">
+</head>
+<body>
+
+    <header>
+        <% include ../../partials/header %>
+    </header>
+
+    <main class="container-fluid">
+      <form ref='uploadForm'
+      id='uploadForm'
+      action='http://localhost:8080/dashboard/uploadfile'
+      method='post'
+      encType="multipart/form-data">
+        <input type="file" name="sampleFile" />
+        <input type='submit' value='Upload!' />
+    </form>
+    </main>
+
+    <footer>
+        <% include ../../partials/footer %>
+    </footer>
+
+</body>
+</html>

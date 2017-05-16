@@ -1,0 +1,109 @@
+.container-fluid {
+  margin-top: 0;
+}
+
+#sidebar {
+  height: 100%;
+  background: #EEE;
+  padding: 0;
+}
+
+#sidebar .user-info {
+  display: flex;
+  padding: 20px;
+}
+
+#sidebar .user-info .avatar {
+  width: 50px;
+  height: 50px;
+  background-image: url("http://wpshowdown.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png");
+  background-size: cover;
+}
+
+#sidebar ul {
+  padding: 0;
+}
+
+#sidebar ul li {
+  list-style: none;
+  padding: 10px 20px;
+}
+
+#sidebar ul li:hover {
+  background: #CCC;
+}
+
+#sidebar ul li i {
+  font-size: 1em;
+  margin-right: 10px;
+}
+
+.title {
+  padding: 0;
+}
+
+.title h2 {
+  background-color: #673AB7;
+  color: #FFF;
+  padding: 10px;
+  font-size: 16px;
+  margin: 0;
+}
+
+#content {
+  padding: 15px;
+}
+
+@media (max-width: 850px) {
+  #sidebar {
+    width: 60px;
+  }
+
+  #sidebar hr {
+    margin: 0;
+    border: none;
+  }
+
+  #sidebar .user-info {
+    display: none;
+  }
+
+  #sidebar ul a span {
+    display: none;
+  }
+}
+
+@media (max-width: 450px) {
+  #sidebar {
+    width: 80px;
+  }
+}
+
+/* CAMPAIGNS */
+
+.cmp {
+  margin-top: 25px;
+  border: 1px solid #EEE;
+}
+
+.cmp-title {
+  background-color: #EEE;
+}
+
+.card p {
+  text-align: center;
+  width: 95%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cmp-description {
+
+}
+
+.cmp-footer a {
+  background-color: #673AB7;
+  color: #FFF;
+  width: 100%;
+}

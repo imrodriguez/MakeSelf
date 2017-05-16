@@ -1,0 +1,59 @@
+b {
+    color: #673AB7;
+}
+
+a {
+  color: #2c3e50;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #34495e;
+}
+
+.btn {
+  border-radius: 0px;
+}
+
+button, .btn-primary {
+  background-color: #673AB7;
+  border-color: #673AB7;
+}
+
+button:hover, .btn-primary:hover {
+  background-color: #7E57C2;
+  border-color: #673AB7;
+  border-width: 3px;
+}
+
+button.close:hover {
+  background-color: #673AB7;
+  color: #FFF;
+}
+
+.modal-content {
+  border-radius: 0px;
+}
+
+.modal-header {
+  padding: 4px 15px;
+  background-color: #673AB7;
+  color: #FFF;
+}
+
+.modal-header button {
+  color: #FFF;
+}
+
+/* INDEX */
+.jumbotron {
+  background-color: #7e57c2;
+  height: 800px;
+  color: #FFF;
+}
+
+/* LOGIN */
+
+.form-group input {
+  border-radius: 0px;
+}

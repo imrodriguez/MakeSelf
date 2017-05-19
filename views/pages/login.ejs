@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <% include ../partials/head %>
+  <% include ../partials/head %>
 </head>
 <body>
 
-    <header>
-        <% include ../partials/header %>
-    </header>
+  <header>
+    <% include ../partials/header %>
+  </header>
 
-    <main class="container-fluid">
-      <div class="row align-items-center justify-content-center">
-        <h2 class="display-3"><b>Shout</b>It!</h2>
-      </div>
-      <div class="row align-items-center justify-content-center">
-        <div class="col-2 text-center">
-          <form action="/login" method="post">
-            <div class="form-group">
-              <input type="text" name="email" class="form-control" placeholder="Username">
-            </div>
-
-            <div class="form-group">
-              <input type="password" name="password" class="form-control" placeholder="Password">
-            </div>
-
-            <div class="form-group">
-              <input type="submit" name="Sign in" value="Sign in" class="btn btn-primary">
-            </div>
-
-          </form>
+  <main class="container-fluid h-100 bg-lila">
+    <div class="row align-items-center justify-content-center">
+      <div class="form-box col-4">
+        <%if (message.length > 0){%>
+        <div class="alert alert-danger" role="alert">
+          <%= message %>
         </div>
-      </div>
-    </main>
+        <%}%>
+        <h2 class="display-3 text-center"><b>Shout</b>It!</h2>
+        <form action="/login" method="post">
+          <div class="form-group">
+            <input type="text" name="email" class="form-control" placeholder="Username">
+          </div>
 
-    <footer>
-        <% include ../partials/footer %>
-    </footer>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="Password">
+          </div>
+
+          <div class="form-group">
+            <input type="submit" name="Sign in" value="Sign in" class="btn btn-primary">
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <% include ../partials/footer %>
+</footer>
 
 </body>
 </html>

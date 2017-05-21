@@ -1,3 +1,4 @@
+
 <div class="col-2 ctm-fullh" id="sidebar">
   <div class="row user-info">
     <div class="col-6">
@@ -19,4 +20,20 @@
       </ul>
     </div>
   </div>
+  <button id="hola" type="button" name="button">
+    hola
+  </button>
 </div>
+<script type="text/javascript">
+  $('#hola').click(function(){
+    if ($('#sidebar').hasClass('col-2')) {
+      $('#sidebar').removeClass('col-2');
+    } else {
+      $('#sidebar').addClass('col-2');
+    }
+    $('#sidebar').toggleClass('col-1');
+    console.log("hola");
+    // $('#sidebar').removeClass('col-2');
+    // $('#sidebar').addClass('col-1');
+  });
+</script>

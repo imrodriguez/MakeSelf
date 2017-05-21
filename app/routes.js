@@ -58,6 +58,8 @@ module.exports = function(app, passport) {
     });
   });
 
+  // CAMPAIGNS
+
   app.get('/dashboard/campaigns', isLoggedIn, function(req, res) {
     Campaign.find({user: req.user._id},(err,campaigns)=>{
       res.render('pages/dashboard/campaigns.ejs', {
@@ -83,6 +85,14 @@ module.exports = function(app, passport) {
     });
   });
 
+  app.post('/dashboard/campaign/:id/newdesign', isLoggedIn, function(req, res) {
+    Campaign.findOne({ _id: req.params.id }, function (err, cmp){
+      cmp.designs.push({name: req.body.name , description: req.body.description});
+      cmp.save();
+    });
+    res.redirect('/dashboard/campaign/'+req.params.id);
+  });
+
   app.get("/dashboard/deletecampaign/:id",isLoggedIn,(req,res)=>{
     Campaign.findOne({_id: req.params.id},(err,campaign)=>{
       if (campaign.user == req.user._id) {
@@ -105,10 +115,18 @@ module.exports = function(app, passport) {
     });
   });
 
-
+  // EDITOR
   app.get('/dashboard/editor', isLoggedIn, function(req, res) {
     res.render('pages/editor/index.ejs', {
       user : req.user
+    });
+  });
+
+  app.get('/dashboard/editor/:size', isLoggedIn, function(req, res) {
+    res.render('pages/editor/editor.ejs', {
+      user : req.user,
+      h: 600,
+      w: 800
     });
   });
 };

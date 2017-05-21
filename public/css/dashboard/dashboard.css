@@ -2,6 +2,10 @@
   margin-top: 0;
 }
 
+.content {
+  padding: 15px;
+}
+
 #sidebar {
   height: 100%;
   background: #EEE;
@@ -72,13 +76,10 @@
 
 /* CAMPAIGNS */
 
-.cmp {
-  margin-top: 25px;
-  border: 1px solid #EEE;
-}
-
-.cmp-title {
-  background-color: #EEE;
+.card {
+  margin: 15px;
+  border-top: 5px solid #673AB7;
+  border-radius: 0px;
 }
 
 .card p {
@@ -87,14 +88,4 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.cmp-description {
-
-}
-
-.cmp-footer a {
-  background-color: #673AB7;
-  color: #FFF;
-  width: 100%;
 }

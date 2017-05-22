@@ -1,41 +1,23 @@
-<!--<div class="ctm-fullh" id="sidebar">
-  <div class="row">
-    <div class="col-12">
-      <ul>
-        <a href="/dashboard">
-          <li>
-            <i class="fa fa-home" aria-hidden="true"></i>
-          </li>
-        </a>
-        <a href="/dashboard/campaigns">
-          <li><i class="fa fa-bullhorn tip" data-placement="right" data-original-title="Campaigns" aria-hidden="true"></i></li>
-        </a>
-        <a href="/dashboard/editor">
-          <li><i class="fa fa-pencil" aria-hidden="true"></i></li>
-        </a>
-      </ul>
-    </div>
-  </div>
-</div>-->
-
-<div class="col-2" id="sidebar">
+<div class="col-1" id="sidebar">
   <div class="row">
     <div class="col sidecont">
       <div class="row">
         <div class="col-12 avatar text-center">
-          <img src="/img/foto.png" class="img-responsive" alt="">
+          <a href="/dashboard/user">
+            <img src="/img/foto.png" class="img-responsive" alt="">
+          </a>
         </div>
       </div>
 
       <div class="row">
         <div class="col-12 text-center">
-          <h3><%= user.local.email %></h3>
+          <!--<h3><%= user.local.email %></h3>-->
         </div>
       </div>
 
       <div class="row">
         <div class="col-12 text-center">
-            <a href="/logout" class="btn btn-danger btn-sm">Log Out<a> 
+          <a href="/logout" class="btn btn-danger btn-sm">Log out<a> 
         </div>
       </div>
 
@@ -43,11 +25,11 @@
         <div class="col-12">
           <ul>
             <a href="/dashboard">
-              <li><i class="fa fa-home" aria-hidden="true"></i> <br>Home</li>
+              <li><i class="fa fa-home" aria-hidden="true"></i> <br><span>Home</span></li>
             </a>
-            <a href="/dashboard/campaigns">
-              <li><i class="fa fa-bullhorn"></i><br>Campaigns</li>
-            </a>
+          <a href="/dashboard/campaigns">
+            <li><i class="fa fa-bullhorn"></i><br><span>Campaigns</span></li>
+          </a>
           </ul>
         </div>
       </div>
@@ -56,8 +38,8 @@
 </div>
 
 <script>
-  $('#hidemenu').click(function(){
-    $('.sidecont').css('display','none');
+  $('#hidemenu').click(function () {
+    $('.sidecont').css('display', 'none');
     $('#sidebar').removeClass('col-2');
   })
 </script>

@@ -13,8 +13,8 @@
 }
 
 #sidebar .avatar img {
-  width: 50%;
-  border-radius: 50%;
+  width: 60%;
+  margin: 8px;
 }
 
 #sidebar ul {
@@ -54,28 +54,28 @@
 }
 
 @media (max-width: 850px) {
-  #sidebar {
-    width: 60px;
-  }
-
-  #sidebar hr {
+  #sidebar .avatar img {
+    width: 90%;
     margin: 0;
-    border: none;
   }
-
-  #sidebar .user-info {
-    display: none;
-  }
-
   #sidebar ul a span {
     display: none;
   }
 }
 
-@media (max-width: 450px) {
-  #sidebar {
-    width: 80px;
+@media (max-width: 500px) {
+  #sidebar ul li i {
+    font-size: 1em;
   }
+
+  #sidebar ul {
+    margin: 0;
+  }
+
+  #sidebar ul li {
+    padding: 10px 0;
+  }
+}
 }
 
 /* CAMPAIGNS */

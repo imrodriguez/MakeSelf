@@ -15,35 +15,37 @@
   <main class="container-fluid ctm-fullh">
     <div class="row ctm-fullh">
       <% include ../../partials/dashboard/sidebar %>
-
         <div class="col">
-          <div class="row">
+          <div class="row animated FadeInRight">
             <div class="col-12 title">
-              <h2>User information</h2>
+              <h2>Home</h2>
             </div>
           </div>
+          <div class="row ctm-fullh">
+            <div class="col-12 content">
 
-          <div class="col-12 content">
-            <div class="row text-center">
-              <div class="col-12">
-                <h2>Username:
-                  <%= user.local.email %>
-                </h2>
-                <form class="" action="index.html" method="post">
-                  <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" class="form-control" value="<%= user.local.email %>" id="name" name="name">
-                  </div>
+              <div class="row">
+                <div class="col-12">
+                  <h2>Username:
+                    <%= user.local.email %>
+                  </h2>
+                  <form class="" action="index.html" method="post">
+                    <div class="form-group">
+                      <label for="name">Name:</label>
+                      <input type="text" class="form-control" value="<%= user.local.email %>" id="name" name="name">
+                    </div>
 
-                  <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="text" class="form-control" value="<%= user.local.email %>" id="email" name="email">
-                  </div>
+                    <div class="form-group">
+                      <label for="email">Email:</label>
+                      <input type="text" class="form-control" value="<%= user.local.email %>" id="email" name="email">
+                    </div>
 
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                  </div>
-                </form>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                  </form>
+                </div>
+
               </div>
 
             </div>
@@ -51,11 +53,10 @@
         </div>
     </div>
   </main>
-  <% include ../../partials/dashboard/newcampaign %>
 
-    <footer>
-      <% include ../../partials/footer %>
-    </footer>
+  <footer>
+    <% include ../../partials/footer %>
+  </footer>
 
 </body>
 

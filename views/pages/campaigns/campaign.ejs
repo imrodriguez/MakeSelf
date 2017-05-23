@@ -13,63 +13,65 @@
   </header>
 
   <main class="container-fluid ctm-fullh">
-
     <div class="row ctm-fullh">
       <% include ../../partials/dashboard/sidebar %>
-        <div class="col" id="content">
-          <div class="row">
+        <div class="col">
+          <div class="row animated FadeInRight">
             <div class="col-12 title">
-              <h2>Campaign</h2>
+              <h2>Home</h2>
             </div>
           </div>
-          <div class="container content">
-            <div class="row">
-              <div class="col-12">
-                <h2><b>Name: </b>
-                  <%= campaign.title %>
-                </h2>
-                <p><b>Description: </b><br/>
-                  <%= campaign.description %>
-                </p>
+          <div class="row ctm-fullh">
+            <div class="col-12 content">
+
+              <div class="row">
+                <div class="col-12">
+                  <h2><b>Name: </b>
+                    <%= campaign.title %>
+                  </h2>
+                  <p><b>Description: </b><br/>
+                    <%= campaign.description %>
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="col-12">
-                <h3><b>Designs: </b></h3>
-                <a href="" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newdesign">
-                  <i class="fa fa-plus" aria-hidden="true"></i> Design
-                </a>
+              <div class="row">
+                <div class="col-12">
+                  <h3><b>Designs: </b></h3>
+                  <a href="" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newdesign">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Design
+                  </a>
 
-                <div class="row">
-                  <% campaign.designs.forEach(function(design) { %>
-                    <div class="col-sm-10 col-md-4 col-lg-3">
-                      <a href="/dashboard/campaign/<%= campaign._id %>">
-                        <div class="card">
-                          <div class="card-block">
-                            <h3 class="card-title">
-                              <%= design.name %>
-                            </h3>
-                            <a href="/dashboard/campaign/<%= campaign._id %>" class="btn btn-primary">Go</a>
-                            <a href="/dashboard/campaign/<%= campaign._id %>/deldesign/<%= design.id %>" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                  <div class="row">
+                    <% campaign.designs.forEach(function(design) { %>
+                      <div class="col-sm-10 col-md-4 col-lg-3">
+                        <a href="/dashboard/campaign/<%= campaign._id %>">
+                          <div class="card">
+                            <div class="card-block">
+                              <h3 class="card-title">
+                                <%= design.name %>
+                              </h3>
+                              <a href="/dashboard/campaign/<%= campaign._id %>/design/<%= design.id %>" class="btn btn-primary">Go</a>
+                              <a href="/dashboard/campaign/<%= campaign._id %>/deldesign/<%= design.id %>" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            </div>
                           </div>
-                        </div>
-                      </a>
-                    </div>
-                    <% }); %>
+                        </a>
+                      </div>
+                      <% }); %>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
     </div>
   </main>
   <% include ../../partials/dashboard/newdesign %>
 
-    <footer>
-      <% include ../../partials/footer %>
-    </footer>
+  <footer>
+    <% include ../../partials/footer %>
+  </footer>
 
 </body>
 

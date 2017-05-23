@@ -1,37 +1,42 @@
 module.exports = function (app, passport) {
+
   var Campaign = require('../app/models/campaign');
 
   // MAIN
 
-  app.get('/', (req, res)=> {
+  app.get('/', (req, res) => {
     if (req.isAuthenticated()) {
       res.redirect('/dashboard');
     } else {
-      res.render('pages/index.ejs');
+      res.render('pages/index.ejs', {
+        user: ""
+      });
     }
   });
 
-  app.get('/login', (req, res)=> {
+  app.get('/login', (req, res) => {
     if (req.isAuthenticated()) {
       res.redirect('/dashboard');
     } else {
       res.render('pages/login.ejs', {
+        user: "",
         message: req.flash('loginMessage')
       });
     }
   });
 
-  app.get('/signup', (req, res)=> {
+  app.get('/signup', (req, res) => {
     if (req.isAuthenticated()) {
       res.redirect('/dashboard');
     } else {
       res.render('pages/signup.ejs', {
+        user: "",
         message: req.flash('signupMessage')
       });
     }
   });
 
-  app.get('/logout', (req, res)=> {
+  app.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
   });
@@ -50,13 +55,13 @@ module.exports = function (app, passport) {
 
   // DASHBOARD
 
-  app.get('/dashboard', isLoggedIn, (req, res)=> {
+  app.get('/dashboard', isLoggedIn, (req, res) => {
     res.render('pages/dashboard/home.ejs', {
       user: req.user
     });
   });
 
-  app.get('/dashboard/user', isLoggedIn, (req, res)=> {
+  app.get('/dashboard/user', isLoggedIn, (req, res) => {
     res.render('pages/dashboard/userinfo.ejs', {
       user: req.user
     });
@@ -64,7 +69,7 @@ module.exports = function (app, passport) {
 
   // CAMPAIGNS
 
-  app.get('/dashboard/campaigns', isLoggedIn, (req, res)=> {
+  app.get('/dashboard/campaigns', isLoggedIn, (req, res) => {
     Campaign.find({
       user: req.user._id
     }, (err, campaigns) => {
@@ -75,7 +80,7 @@ module.exports = function (app, passport) {
     });
   });
 
-  app.get('/dashboard/campaign/:id', isLoggedIn, (req, res)=> {
+  app.get('/dashboard/campaign/:id', isLoggedIn, (req, res) => {
     Campaign.findOne({
       _id: req.params.id
     }, (err, campaign) => {
@@ -93,30 +98,6 @@ module.exports = function (app, passport) {
     });
   });
 
-  app.post('/dashboard/campaign/:id/newdesign', isLoggedIn, (req, res)=> {
-    Campaign.findOne({
-      _id: req.params.id
-    }, function (err, cmp) {
-      cmp.designs.push({
-        id: cmp.designs.length,
-        name: req.body.name,
-        description: req.body.description
-      });
-      cmp.save();
-    });
-    res.redirect('/dashboard/campaign/' + req.params.id);
-  });
-
-  app.get('/dashboard/campaign/:id/deldesign/:idesign', isLoggedIn, (req, res)=> {
-    Campaign.findOne({
-      _id: req.params.id
-    }, function (err, cmp) {
-      cmp.designs.splice(req.params.idesign, 1);
-      cmp.save();
-    });
-    res.redirect('/dashboard/campaign/' + req.params.id);
-  });
-
   app.get("/dashboard/deletecampaign/:id", isLoggedIn, (req, res) => {
     Campaign.findOne({
       _id: req.params.id
@@ -130,7 +111,7 @@ module.exports = function (app, passport) {
     res.redirect("/dashboard/campaigns");
   });
 
-  app.post('/dashboard/newcampaign', isLoggedIn, (req, res)=> {
+  app.post('/dashboard/newcampaign', isLoggedIn, (req, res) => {
     var campaign = new Campaign({
       title: req.body.name,
       user: req.user._id,
@@ -146,14 +127,52 @@ module.exports = function (app, passport) {
     });
   });
 
+  app.post('/dashboard/campaign/:id/newdesign', isLoggedIn, (req, res) => {
+    Campaign.findOne({
+      _id: req.params.id
+    }, function (err, cmp) {
+      cmp.designs.push({
+        id: cmp.designs.length,
+        name: req.body.name,
+        description: req.body.description,
+        objects: {}
+      });
+      cmp.save();
+    });
+    res.redirect('/dashboard/campaign/' + req.params.id);
+  });
+
+  app.get('/dashboard/campaign/:id/deldesign/:idesign', isLoggedIn, (req, res) => {
+    Campaign.findOne({
+      _id: req.params.id
+    }, function (err, cmp) {
+      cmp.designs.splice(req.params.idesign, 1);
+      cmp.save();
+    });
+    res.redirect('/dashboard/campaign/' + req.params.id);
+  });
+
+  app.get('/dashboard/campaign/:id/design/:idesign', isLoggedIn, (req, res) => {
+    Campaign.findOne({
+      _id: req.params.id
+    }, function (err, cmp) {
+      res.render('pages/editor/editor.ejs', {
+        user: req.user,
+        w: 800,
+        h: 800,
+        design: cmp.designs[req.params.idesign]
+      });
+    });
+  });
+
   // EDITOR
-  app.get('/dashboard/editor', isLoggedIn, (req, res)=> {
+  app.get('/dashboard/editor', (req, res) => {
     res.render('pages/editor/index.ejs', {
       user: req.user
     });
   });
 
-  app.get('/dashboard/editor/:size', isLoggedIn, (req, res)=> {
+  app.get('/dashboard/editor/:size', (req, res) => {
     res.render('pages/editor/editor.ejs', {
       user: req.user,
       h: 600,

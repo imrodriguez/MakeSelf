@@ -5,12 +5,16 @@ class square {
     this.w = w;
     this.h = h;
     this.id = id;
-    this.object = doc.rect(this.x,this.y,this.w,this.h);
+    this.fill;
+    this.object;
   }
 
   show() {
+    $("#" + this.id).remove();
+    this.object = doc.rect(this.x,this.y,this.w,this.h);
     this.object.attr({
-      id: this.id
+      id: this.id,
+      fill: this.fill
     });
     this.object.click(function() {
       square.load(parseInt(this.attr("x"))+parseInt(this.attr('transform').totalMatrix.e),parseInt(this.attr("y"))+ parseInt(this.attr('transform').totalMatrix.f),this.attr("width"),this.attr("height"),this.attr('fill'),this.attr('id'));
@@ -33,9 +37,6 @@ class square {
   }
 
   static load(x,y,w,h,c,id) {
-    // $('#'+id).attr('stroke','red');
-    // $('#'+id).attr('stroke-width','3');
-    // $('#'+id).attr('stroke-linecap','square');
     function rgb2hex(rgb){
      rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
      return (rgb && rgb.length === 4) ? "#" +
@@ -78,7 +79,8 @@ class square {
   </div>
   `);
   $( "#opt-squareW" ).change(function() {
-    $("#" + id).attr('width',$(this).val());
+    objects[id].w = parseInt($(this).val());
+    objects[id].show();
   });
   $( "#opt-squareX" ).change(function() {
     $("#" + id).attr('transform',"");
@@ -91,10 +93,12 @@ class square {
     $("#" + id).attr('x',$('#opt-squareX').val());
   });
   $( "#opt-squareH" ).change(function() {
-    $("#" + id).attr('height',$(this).val());
+    objects[id].h = parseInt($(this).val());
+    objects[id].show();
   });
   $( "#opt-squareC" ).change(function() {
-    $("#" + id).attr('fill',$(this).val());
+    objects[id].fill = $(this).val();
+    objects[id].show();
   });
   }
 

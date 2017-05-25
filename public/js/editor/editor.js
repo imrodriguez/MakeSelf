@@ -1,42 +1,27 @@
 var objects = [];
-var optionShape = "" ;
+var optionShape = "";
+var doc;
 
-var doc = Snap("#svg");
-doc.attr({
-  height: doch/2,
-  width: docw/2
-});
+var socket = io.connect('http://localhost:8080', {reconnect: true});
 
-doc.click(function(evt){
+socket.emit('hola','hola');
+
+load();
+
+doc.click(function (evt) {
   if (optionShape == "square") {
-    let sq = new square(evt.offsetX,evt.offsetY,80,50,objects.length);
-    sq.show();
-    objects.push(sq);
+    var obj = new square(evt.offsetX, evt.offsetY, 80, 50, objects.length);
   }
   if (optionShape == "circle") {
-    let cr = new circle(evt.offsetX,evt.offsetY,50);
-    cr.show();
-    objects.push(cr);
+    var obj = new circle(evt.offsetX, evt.offsetY, 50);
   }
   if (optionShape == "text") {
-    let tx = new text(evt.offsetX,evt.offsetY,prompt("Texto: "),objects.length);
-    tx.show();
-    objects.push(tx);
+    var obj = new text(evt.offsetX, evt.offsetY, prompt("Texto: "), objects.length);
   }
+  obj.show();
+  objects.push(obj);
 });
 
-$('#save').click(function(){
-  
-  console.log(JSON.stringify(objects));
-  /*var svg  = document.getElementById('svg'),
-  xml  = new XMLSerializer().serializeToString(svg),
-  data = "data:image/svg+xml;base64," + btoa(xml),
-  img  = new Image()
-
-  img.setAttribute('src', data)
-  document.body.appendChild(img)*/
+$('#save').click(function () {
+  socket.emit('save',{idcampaign: , idesign: , obj:JSON.stringify(objects)});
 });
-
-function toimg(){
-
-}

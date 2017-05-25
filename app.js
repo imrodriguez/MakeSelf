@@ -5,8 +5,8 @@ var port = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
-var http = require('http').Server(app);
-//var io = require('socket.io')(http);
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -33,16 +33,17 @@ app.use(passport.session());
 app.use(flash());
 
 // routes ======================================================================
-/*io.on('connection', function(socket){
-  console.log('a user connected');
-});
-io.on('save',function(ele){
-    console.log(ele);
-});*/
 require('./config/passport')(passport);
 require('./app/routes.js')(app, passport);
+io.on('connection', function (socket) {
+    socket.on('save', function (obj) {
+        console.log(obj);
+    });
+});
 
 // launch ======================================================================
-app.listen(port);
-
+//app.listen(port);
+server.listen(port, function () {
+    console.log('Servidor corriendo en el puerto: 8080');
+});
 console.log('Servidor corriendo en el puerto: ' + port);

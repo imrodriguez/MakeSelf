@@ -160,7 +160,8 @@ module.exports = function (app, passport) {
         user: req.user,
         w: 800,
         h: 800,
-        design: cmp.designs[req.params.idesign]
+        design: cmp.designs[req.params.idesign],
+        idcmp: cmp._id
       });
     });
   });

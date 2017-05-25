@@ -4,6 +4,7 @@
 <head>
 	<title>MakeSelf</title>
 	<% include ../../partials/head %>
+		<script src="/socket.io/socket.io.js" charset="UTF-8"></script>
 		<link rel="stylesheet" href="/css/editor/editor.css">
 </head>
 
@@ -19,8 +20,9 @@
 				<div class="row align-items-center"></div>
 			</div>
 			<div class="col-6 text-right">
-				<a id="save" href="save" class="btn btn-primary">Save</a>
+				<a id="save" href="#" class="btn btn-primary">Save</a>
 				<a id="download" href="#" class="btn btn-primary">Download</a>
+				
 			</div>
 		</div>
 
@@ -51,7 +53,7 @@
 			<script src="/js/editor/class/circle.js" charset="utf-8"></script>
 			<script src="/js/editor/class/text.js" charset="utf-8"></script>
 			<script src="/js/editor/view/options.js" charset="utf-8"></script>
-			<script src="/js/editor/loadtemplates.js" charset="utf-8"></script>
+			<script src="/js/editor/functions.js" charset="utf-8"></script>
 			<script src="/js/editor/editor.js" charset="utf-8"></script>
 	</footer>
 </body>

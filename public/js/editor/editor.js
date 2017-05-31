@@ -1,10 +1,7 @@
-var objects = [];
+//var objects = [];
 var optionShape = "";
 var doc;
-
 var socket = io.connect('http://localhost:8080', {reconnect: true});
-
-socket.emit('hola','hola');
 
 load();
 
@@ -23,5 +20,10 @@ doc.click(function (evt) {
 });
 
 $('#save').click(function () {
-  socket.emit('save',{idcampaign: , idesign: , obj:JSON.stringify(objects)});
+  socket.emit('save',{idcampaign: idcmp, idesign: idesign, obj:objects});
+  let data = toimg();
+  $('#download').attr({
+    download: 'download.png',
+    href: data,
+  });
 });

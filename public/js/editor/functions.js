@@ -1,9 +1,13 @@
 function load() {
   doc = Snap("#svg");
   doc.attr({
-    height: doch / 2,
-    width: docw / 2
+    height: 800 / 2,
+    width: 600 / 2
   });
+
+  /*for (var obj in objects) {
+    obj.show();
+  }*/
 
   let data = toimg();
   $('#download').attr({
@@ -18,5 +22,3 @@ function toimg() {
     data = "data:image/svg+xml;base64," + btoa(xml);
   return data;
 }
-
-

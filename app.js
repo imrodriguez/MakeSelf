@@ -35,15 +35,19 @@ app.use(flash());
 // routes ======================================================================
 require('./config/passport')(passport);
 require('./app/routes.js')(app, passport);
+var Campaign = require('./app/models/campaign');
 io.on('connection', function (socket) {
     socket.on('save', function (obj) {
-        console.log(obj);
+        Campaign.findOne({_id: obj.idcampaign}, function (err, cmp) {
+            cmp.designs[obj.idesign].objects = obj.obj;
+            cmp.save(function (err, updatedcmp) {
+                console.log(updatedcmp);
+            });
+        });
     });
 });
 
 // launch ======================================================================
-//app.listen(port);
 server.listen(port, function () {
     console.log('Servidor corriendo en el puerto: 8080');
 });
-console.log('Servidor corriendo en el puerto: ' + port);

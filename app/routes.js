@@ -135,7 +135,7 @@ module.exports = function (app, passport) {
         id: cmp.designs.length,
         name: req.body.name,
         description: req.body.description,
-        objects: {}
+        objects: '[]'
       });
       cmp.save();
     });

@@ -38,10 +38,17 @@ require('./app/routes.js')(app, passport);
 var Campaign = require('./app/models/campaign');
 io.on('connection', function (socket) {
     socket.on('save', function (obj) {
-        Campaign.findOne({_id: obj.idcampaign}, function (err, cmp) {
-            cmp.designs[obj.idesign].objects = obj.obj;
-            cmp.save(function (err, updatedcmp) {
-                console.log(updatedcmp);
+        Campaign.findOne({
+            _id: obj.idcampaign
+        }, function (err, cmp) {
+            cmp.designs[0].name = "hola";
+            console.log(cmp.designs[0]);
+
+            cmp.save(function (err, cmps) {
+                if (err) {
+                    console.log(err);
+                }
+                console.log(cmps);
             });
         });
     });

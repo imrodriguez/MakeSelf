@@ -56,8 +56,13 @@ module.exports = function (app, passport) {
   // DASHBOARD
 
   app.get('/dashboard', isLoggedIn, (req, res) => {
-    res.render('pages/dashboard/home.ejs', {
-      user: req.user
+    Campaign.find({
+      user: req.user._id
+    }, (err, campaigns) => {
+      res.render('pages/dashboard/campaigns.ejs', {
+        user: req.user,
+        campaigns: campaigns
+      });
     });
   });
 
